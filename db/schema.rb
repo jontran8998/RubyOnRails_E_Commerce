@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_212242) do
+ActiveRecord::Schema.define(version: 2019_10_02_212845) do
 
   create_table "checkins", force: :cascade do |t|
     t.datetime "date"
@@ -30,5 +30,23 @@ ActiveRecord::Schema.define(version: 2019_10_02_212242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.integer "checkin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["checkin_id"], name: "index_services_on_checkin_id"
+  end
+
+  create_table "technicians", force: :cascade do |t|
+    t.string "name"
+    t.integer "checkin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["checkin_id"], name: "index_technicians_on_checkin_id"
+  end
+
   add_foreign_key "checkins", "customers"
+  add_foreign_key "services", "checkins"
+  add_foreign_key "technicians", "checkins"
 end
