@@ -1,2 +1,34 @@
-<h1>Checkin#index</h1>
-<p>Find me in app/views/checkin/index.html.erb</p>
+<h1>Check-in System</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Technician</th>
+      <th scope="col">Services</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% count = 0%>
+    <% @checkins.each do |checkin|%>
+    <tr>
+      <% count +=1 %>
+      <th scope="row"><%= count%></th>
+      <td><%= checkin.date%></td>
+      <td><%= checkin.customers[0].first_name + ' ' + checkin.customers[0].last_name%></td>
+      <td>
+        <% checkin.technicians.each do |technician|%>
+        <%= technician.name + ' ,'%>
+        <% end %>
+      </td>
+      <td>
+        <% checkin.services.each do |service|%>
+        <%= service.name + ' ,'%>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

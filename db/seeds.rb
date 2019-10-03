@@ -1,11 +1,12 @@
 require 'faker'
 # Faker::Config.locale = 'en-CA'
-
-Customer.destroy_all
-Checkin.destroy_all
+CustomerCheckin.destroy_all
 Technician.destroy_all
 Service.destroy_all
-CustomerCheckin.destroy_all
+Customer.destroy_all
+Checkin.destroy_all
+
+
 
 technician_list = ['Parker', 'Julie', 'Owen', 'Helen', 'Jane', 'Emma', 'Jeny']
 service_list = ['Manicure', 'Pedicure', 'Acrylic', 'Gel Nails', 'Crown Pedicure', 'Shellac Manicure']
@@ -40,11 +41,11 @@ service_list = ['Manicure', 'Pedicure', 'Acrylic', 'Gel Nails', 'Crown Pedicure'
   
 end
 
-c = Customer.all
-c.each do |customer|
-  ch = Checkin.all.sample
-  customer.customer_checkins.create(
-    checkin: ch
+ch = Checkin.all
+ch.each do |checkin|
+  c = Customer.all.sample
+  checkin.customer_checkins.create(
+    customer: c
   )
 end
 
