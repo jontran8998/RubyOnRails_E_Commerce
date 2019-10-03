@@ -10,6 +10,7 @@
       <th scope="col">Birth Date</th>
       <th scope="col">Email</th>
       <th scope="col">Phone Number</th>
+      <th scope="col">Check-in</th>
     </tr>
   </thead>
   <tbody>
@@ -23,9 +24,21 @@
       <td><%= customer.birth_date%></td>
       <td><%= customer.email%></td>
       <td><%= customer.phone_num%></td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Check-in
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% customer.checkins.each do |checkin|%>
+            <%= puts "#{checkin}"%>
+            <a class="dropdown-item" href="checkins/<%= checkin.id%>"><%= checkin.date.strftime("%F")%></a>
+            <% end%>
+          </div>
+        </div>
+      </td>
     </tr>
     <% end %>
-
-
   </tbody>
 </table>
