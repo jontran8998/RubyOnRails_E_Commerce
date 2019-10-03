@@ -21,14 +21,18 @@
           href="customers/<%= checkin.customers[0].id %>"><%= checkin.customers[0].first_name + ' ' + checkin.customers[0].last_name%></a>
       </td>
       <td>
+        <% tech = []%>
         <% checkin.technicians.each do |technician|%>
-        <%= technician.name + ' ,'%>
+        <% tech.push(technician.name)%>
         <% end %>
+        <%= tech * ", "%>
       </td>
       <td>
+        <% ser = []%>
         <% checkin.services.each do |service|%>
-        <%= service.name + ' ,'%>
+        <% ser.push(service.name)%>
         <% end %>
+        <%= ser * ", "%>
       </td>
     </tr>
     <% end %>

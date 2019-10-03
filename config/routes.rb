@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'checkins', to: 'checkin#index'
+  get 'checkins/:id', to: 'checkin#show'
   get 'customers', to: 'customer#index'
   get 'customers/:id', to: 'customer#show'
   get 'about', to: 'about#index'
