@@ -1,2 +1,29 @@
-<h1>About#index</h1>
-<p>Find me in app/views/about/index.html.erb</p>
+<h1>About</h1>
+<p style="text-align: justify">This is an <strong>Rail intro Project</strong>. It includes three navigation pages such
+  as Checkins, Customers and About. The Dataset includs 4 models: Customer, Checkin, Technician and Service. There are
+  some relationship between models. Many-to-Many associartion is made for
+  Customer and Checkin, while Checkin model will have one-to-many relationship with Technician and Service. The dataset
+  is created by using Faker gem and some hand-made data. Below is the ERD diagram for the Project.
+</p>
+<%= image_tag('erd', height: 'auto', width: '100%', alt: 'ERD Diagram') %>
+<div class="row">
+  <div class="col">
+    <p>Author: Jon Tran</p>
+    <p>Email: trungt8998@gmail.com</p>
+    <p>Linkin: <a href="link.com">Jon Tran</a></p>
+    <P>Address: Red River College _ Princess Campus</P>
+  </div>
+  <div class="col">
+    <div id='map'></div>
+  </div>
+</div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoidHJ1bmd0ODk5OCIsImEiOiJjanVjeXVjc3QwMXY1NDNtdG05aXgyNXJiIn0.pTYDSCaJyVfprrxxsXFzAQ';
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+    center: [-74.50, 40], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+  });
+</script>
