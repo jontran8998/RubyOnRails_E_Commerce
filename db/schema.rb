@@ -14,10 +14,8 @@ ActiveRecord::Schema.define(version: 2019_10_03_004155) do
 
   create_table "checkins", force: :cascade do |t|
     t.datetime "date"
-    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_checkins_on_customer_id"
   end
 
   create_table "customer_checkins", force: :cascade do |t|
@@ -34,30 +32,29 @@ ActiveRecord::Schema.define(version: 2019_10_03_004155) do
     t.string "last_name"
     t.string "email"
     t.date "birth_date"
-    t.integer "phone_num"
+    t.string "phone_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "services", force: :cascade do |t|
     t.string "name"
-    t.integer "checkins_id", null: false
+    t.integer "checkin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["checkins_id"], name: "index_services_on_checkins_id"
+    t.index ["checkin_id"], name: "index_services_on_checkin_id"
   end
 
   create_table "technicians", force: :cascade do |t|
     t.string "name"
-    t.integer "checkins_id", null: false
+    t.integer "checkin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["checkins_id"], name: "index_technicians_on_checkins_id"
+    t.index ["checkin_id"], name: "index_technicians_on_checkin_id"
   end
 
-  add_foreign_key "checkins", "customers"
   add_foreign_key "customer_checkins", "checkins"
   add_foreign_key "customer_checkins", "customers"
-  add_foreign_key "services", "checkins", column: "checkins_id"
-  add_foreign_key "technicians", "checkins", column: "checkins_id"
+  add_foreign_key "services", "checkins"
+  add_foreign_key "technicians", "checkins"
 end
