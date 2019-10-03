@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_212845) do
+ActiveRecord::Schema.define(version: 2019_10_03_004155) do
 
   create_table "checkins", force: :cascade do |t|
     t.datetime "date"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2019_10_02_212845) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_checkins_on_customer_id"
+  end
+
+  create_table "customer_checkins", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "checkin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["checkin_id"], name: "index_customer_checkins_on_checkin_id"
+    t.index ["customer_id"], name: "index_customer_checkins_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -47,6 +56,8 @@ ActiveRecord::Schema.define(version: 2019_10_02_212845) do
   end
 
   add_foreign_key "checkins", "customers"
+  add_foreign_key "customer_checkins", "checkins"
+  add_foreign_key "customer_checkins", "customers"
   add_foreign_key "services", "checkins", column: "checkins_id"
   add_foreign_key "technicians", "checkins", column: "checkins_id"
 end
