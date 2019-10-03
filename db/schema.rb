@@ -32,21 +32,21 @@ ActiveRecord::Schema.define(version: 2019_10_02_212845) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
-    t.integer "checkin_id", null: false
+    t.integer "checkins_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["checkin_id"], name: "index_services_on_checkin_id"
+    t.index ["checkins_id"], name: "index_services_on_checkins_id"
   end
 
   create_table "technicians", force: :cascade do |t|
     t.string "name"
-    t.integer "checkin_id", null: false
+    t.integer "checkins_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["checkin_id"], name: "index_technicians_on_checkin_id"
+    t.index ["checkins_id"], name: "index_technicians_on_checkins_id"
   end
 
   add_foreign_key "checkins", "customers"
-  add_foreign_key "services", "checkins"
-  add_foreign_key "technicians", "checkins"
+  add_foreign_key "services", "checkins", column: "checkins_id"
+  add_foreign_key "technicians", "checkins", column: "checkins_id"
 end
