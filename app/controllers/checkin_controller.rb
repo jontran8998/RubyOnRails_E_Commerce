@@ -1,6 +1,6 @@
 class CheckinController < ApplicationController
   def index
-    @checkins = Checkin.all
+    @checkins = Checkin.order(:date).page(params[:page])
   end
 
   def show
