@@ -32,8 +32,7 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <% customer.checkins.each do |checkin|%>
-            <%= puts "#{checkin}"%>
-            <a class="dropdown-item" href="checkins/<%= checkin.id%>"><%= checkin.date.strftime("%F")%></a>
+            <%= link_to(checkin.date.strftime("%F"), checkin_path(checkin), :class => "dropdown-item")%>
             <% end%>
           </div>
         </div>

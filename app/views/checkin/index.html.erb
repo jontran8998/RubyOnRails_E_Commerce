@@ -17,8 +17,8 @@
       <% count +=1 %>
       <th scope="row"><%= count%></th>
       <td><%= checkin.date%></td>
-      <td><a
-          href="customers/<%= checkin.customers[0].id %>"><%= checkin.customers[0].first_name + ' ' + checkin.customers[0].last_name%></a>
+      <td>
+        <%= link_to(checkin.customers[0].first_name + ' ' + checkin.customers[0].last_name, customer_path(checkin.customers[0]))%>
       </td>
       <td>
         <% tech = []%>
