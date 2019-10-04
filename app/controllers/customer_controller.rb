@@ -1,6 +1,6 @@
 class CustomerController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.all.order(:first_name).page(params[:page])
   end
   
   def show
