@@ -21,7 +21,7 @@
       <td><%= @customer.last_name%></td>
       <td><%= @customer.birth_date%></td>
       <td><%= @customer.email%></td>
-      <td><%= @customer.phone_num%></td>
+      <td><%= number_to_phone(@customer.phone_num, area_code: true)%></td>
       <td>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
