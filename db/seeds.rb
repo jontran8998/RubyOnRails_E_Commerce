@@ -11,7 +11,7 @@ Checkin.destroy_all
 technician_list = ['Parker', 'Julie', 'Owen', 'Helen', 'Jane', 'Emma', 'Jeny']
 service_list = ['Manicure', 'Pedicure', 'Acrylic', 'Gel Nails', 'Crown Pedicure', 'Shellac Manicure']
 
-10.times do 
+200.times do 
   customer = Customer.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -23,11 +23,6 @@ service_list = ['Manicure', 'Pedicure', 'Acrylic', 'Gel Nails', 'Crown Pedicure'
   checkin = Checkin.create(
     date: Faker::Date.between_except(from: 1.year.ago, to: 1.year.from_now, excepted: Date.today)
   )
-
-  # puts Faker::Date.between_except(from: 1.year.ago, to: 1.year.from_now, excepted: Date.today)
-  # puts "#{checkin}"
-  # checkin.save()
-
 
   rand(1..4).times do
     checkin.technicians.create(
