@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+# Bundle for active link on nav bar
+gem 'active_link_to'
 # Bundle for pagination
 gem 'kaminari' 
 # Bundle for fake datas

@@ -1,5 +1,5 @@
 class Checkin < ApplicationRecord
-  paginates_per 5
+  paginates_per 8
   has_many :technicians
   has_many :services
   has_many :customer_checkins
