@@ -16,7 +16,7 @@
     <tr>
       <% count +=1 %>
       <th scope="row"><%= count%></th>
-      <td><%= checkin.date%></td>
+      <td><%= checkin.date.strftime("%F")%></td>
       <td>
         <%= link_to(checkin.customers[0].first_name + ' ' + checkin.customers[0].last_name, customer_path(checkin.customers[0]))%>
       </td>
