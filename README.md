@@ -14,5 +14,4 @@ Run: rails s
 Then enjoy the web at http://localhost:3000/
 
 
-
-
+Access file: Rails_Inro_Project.docx to get more details and requirements of the project.
